@@ -27,10 +27,10 @@ export class HeaderComponent implements OnInit {
     ];
     this.items = [
       {
-        label:'EXPENSE DETAIL',      
+        label:'Home',      
     },
     {
-        label:'ADD EXPENSE',  
+        label:'About',  
     }
   ];
   this.menuitem = [

@@ -13,44 +13,9 @@
 
 </div>
 <div class="p-grid p-d-flex p-jc-center ">
-    <div class="col-12 p-md-4 p-text-center">
-        <!-- <h1>Expenses</h1> -->
-        <!-- <div class="p-bod" *ngFor="let user of expes">
-         <span>{{user.expensename}}" </span>
-        </div> -->
-        <p-dataView [value]="expes">
-            <!-- <ng-template let-data pTemplate="listItem">
-                <div>
-                    {{data.expensename}}
-                </div>
-            </ng-template> -->
-            <ng-template let-product pTemplate="listItem">
-                <div class="p-col-12">
-                    <div class="product-list-item">
-                        <div class="product-list-detail">
-                            <div class="product-name">{{product.expensename}}</div>
-                            <div class="product-description">{{product.expensedetail}}</div>
-                          
-                            <i class="pi pi-tag product-category-icon"></i><span class="product-category">{{product.date}}</span>
-                        </div>
-                        <!-- <div class="product-list-action">
-                            <div *ngFor="let cat of product.category">
-                                <span class="product-price">{{product.name}}</span>
-                            </div>
-                            <div *ngFor="let hist of product.history"> 
-                                <span>{{hist.event}}</span>
-                                <span>{{hist.date}}</span>
-                            </div>
 
-                        </div> -->
-                    </div>
-                </div>
-            </ng-template>
-        </p-dataView>
-        
-        <p-button (click)="openNew()" icon="pi pi-external-link" label="Add New"></p-button>
-    </div>
     <div class="col-12 p-md-8">
+        <p-button (click)="openNew()" icon="pi pi-external-link" label="Add New"></p-button>
         <p-table #dt [value]="expes" [rows]="10" [paginator]="true" 
      [rowHover]="true" dataKey="id"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries" [showCurrentPageReport]="true">
