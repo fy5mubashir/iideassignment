@@ -20,6 +20,8 @@ export class HomeComponent implements OnInit {
   selectedCity:any;
   cities: any[];
   foods: any[];
+  storageModal:boolean;
+  dataviewData:any[];
   ngOnInit(): void {
     this.cities = [
       {name: 'New York', code: 'NY'},
@@ -46,9 +48,10 @@ export class HomeComponent implements OnInit {
       console.log(x)
       this.expes = x
       this.dataa=x.map(x=>x.history)
+      localStorage.setItem("trim",JSON.stringify(this.expes))
       console.log(this.expes,"detail chekc",this.dataa)
     });
-
+    this.dataviewData=JSON.parse(localStorage.getItem("trim"))
   }
 showModalDialog(){
 
@@ -78,6 +81,8 @@ openNew() {
 editExpo(expenses: Expo) {
   this.expenses = {...expenses};
   this.displayModal = true;
+  localStorage.setItem("trim",JSON.stringify(this.expes))
+  this.dataviewData=JSON.parse(localStorage.getItem("trim"))
 }
 
 del(expenses: Expo){
@@ -85,7 +90,9 @@ del(expenses: Expo){
   this.expenses = {};
   this.messageService.add({severity:'success', summary: 'Successful', detail: 'Expense Deleted', life: 3000});
 }
-
+localData(){
+  this.storageModal=true
+}
 
 hideDialog() {
   this.displayModal = false;
@@ -111,8 +118,10 @@ saveProduct() {
       }
 
       this.expes = [...this.expes];
+      localStorage.setItem("trim",JSON.stringify(this.expes))
       this.displayModal = false;
       this.expenses = {};
+      this.dataviewData=JSON.parse(localStorage.getItem("trim"))
   }
   
 }
@@ -131,8 +140,8 @@ findIndexById(id: string): number {
 
 createId(): string {
   let id = '';
-  var chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-  for ( var i = 0; i < 5; i++ ) {
+  var chars = '012345678987874975149874198745498745774987798494474';
+  for ( var i = 0; i < 2; i++ ) {
       id += chars.charAt(Math.floor(Math.random() * chars.length));
   }
   return id;
@@ -149,6 +158,7 @@ export class Expo{
   public added_on?:string;
   public history?:Array<any>;
   public id?:string;
+  public contact?:string;
 }
 export class History{
   public id?: number;     
